@@ -54,6 +54,19 @@ else ()
     MESSAGE(STATUS "Audio Backend: None (-DUSE_AUDIO=OFF)")
 endif ()
 
+if (USE_CAMERA)
+    MESSAGE(STATUS "Camera Module: Included")
+    list(APPEND raylib_public_headers rcamera.h)
+else ()
+    MESSAGE(STATUS "Camera Module: None (-DUSE_CAMERA=OFF)")
+endif ()
+
+if (USE_GESTURES)
+    MESSAGE(STATUS "Gestures Module: Included")
+    list(APPEND raylib_public_headers rgestures.h)
+else ()
+    MESSAGE(STATUS "Gesture Module: None (-DUSE_GESTURE=OFF)")
+endif ()
 
 add_library(raylib ${raylib_sources} ${raylib_public_headers})
 
